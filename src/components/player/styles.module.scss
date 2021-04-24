@@ -1,0 +1,77 @@
+.playerContainer {
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 0.8rem;
+
+  background-color: var(--redash_dark);
+  box-shadow: 0 0px 10px 0 black;
+
+  .episodeTitle {
+  }
+
+  .seekBarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+    }
+
+    .seekBar {
+      width: 75%;
+      height: 2px;
+      margin: 0 1rem;
+      background-color: var(--redash_medium);
+    }
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    menu {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+
+      button {
+        padding: 0;
+        font-size: 0;
+
+        img {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+
+    .settingsMenu {
+      button {
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.settingsMenu {
+  position: absolute;
+  right: 12%; 
+
+  button:last-child {
+    font-family: Lobster;
+    font-size: 1.2rem;
+    color: var(--redash_medium);
+  }
+}
