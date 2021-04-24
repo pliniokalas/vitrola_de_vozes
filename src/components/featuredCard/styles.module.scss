@@ -1,0 +1,59 @@
+.cardContainer {
+  padding: 1rem;
+  max-height: 22rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 2px solid var(--redash_light);
+  border-radius: 1rem;
+  position: relative;
+  background-color: var(--redash_light);
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 67%; /* magic number, but the height mostly doesn't change */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    border-radius: inherit;
+    background-color: var(--redash_dark);
+  }
+
+  h2 {
+    margin-top: 0;
+    font-family: Lobster, serif;
+    color: var(--red_dark);
+  }
+
+  input {
+    width: 6rem; 
+    height: 6rem; 
+
+    border: 2px solid var(--redash_light);
+    border-radius: 3rem;
+    position: relative;
+    background-color: var(--redash_light);
+  }
+
+  p {
+    padding: 0.5rem;
+    width: max-content;
+    font-size: 0.8rem;
+
+    background-color: var(--gray_dark);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  a {
+    position: relative;
+    &:hover {
+      text-decoration: underline; 
+    }
+  }
+}
