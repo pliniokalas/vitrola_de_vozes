@@ -21,7 +21,7 @@ export default function FeaturedCard(props) {
 
         <p>{metadata}</p>
 
-        <Link href={`/${id}`}>
+        <Link href={`/episodes/${id}`}>
           <a>{title}</a>
         </Link>
       </article>

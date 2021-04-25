@@ -14,21 +14,21 @@ export default function Player(props) {
       <section>
         <menu className={styles.playMenu}>
           <button type="button">
-            <img src="prev.svg" alt="Anterior" />
+            <img src="/prev.svg" alt="Anterior" />
           </button>
 
           <button type="button">
-            <img src="play.svg" alt="Tocar" />
+            <img src="/play.svg" alt="Tocar" />
           </button>
 
           <button type="button">
-            <img src="next.svg" alt="Próximo" />
+            <img src="/next.svg" alt="Próximo" />
           </button>
         </menu>
 
         <menu className={styles.settingsMenu}>
           <button type="button">
-            <img src="volume.svg" alt="volume" />
+            <img src="/volume.svg" alt="volume" />
           </button>
 
           <button type="button">

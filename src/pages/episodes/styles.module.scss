@@ -1,0 +1,60 @@
+.episodeContainer {
+  display: grid;
+  grid-template: auto / 1fr 2fr;
+  gap: 2rem;
+  justify-items: space-around;
+
+  padding: 1rem 4rem;
+
+  > div {
+    height: max-content;
+    padding: 1rem;
+    border-radius: 1rem; 
+    background-color: var(--redash_dark);
+
+    img {
+      height: 7rem;
+      width: max-content;
+      border-radius: 5px;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+
+    span {
+      padding: 0.5rem;
+      width: max-content;
+      font-size: 0.8rem;
+
+      background-color: var(--gray_dark);
+      opacity: 0.5;
+      border-radius: 2px;
+
+      &:last-child {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  article {
+    button {
+      vertical-align: bottom;
+      margin-right: 0.5rem;
+
+      img {
+        width: inherit; 
+        height: inherit; 
+      }
+    }
+
+    h2 {
+      font-family: Lobster, serif;
+      color: var(--redsmoke);
+      margin-top: 0;
+    }
+    div {
+      color: var(--redash_light);
+    }
+  }
+}
