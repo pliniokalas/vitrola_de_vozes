@@ -2,11 +2,12 @@ import Link from "next/link";
 import styles from "./styles.module.scss";
 
 export default function FeaturedCard(props) {
-  const { mode, thumb, metadata, title } = props;
+  const { mode, thumb, metadata, title, id } = props;
+
   return (
     <>
-      <div className={styles.cardContainer}>
-        <h2>{mode}</h2>
+      <article className={mode !== "ep" ? styles.featuredContainer : styles.regularContainer}>
+        { mode !== "ep" && <h2>{mode}</h2> }
 
         <input 
           type="image" 
@@ -16,10 +17,10 @@ export default function FeaturedCard(props) {
         />
         <p>{metadata}</p>
 
-        <Link href={`/${title}`}>
+        <Link href={`/${id}`}>
           <a>{title}</a>
         </Link>
-      </div>
+      </article>
     </>
   );
 }

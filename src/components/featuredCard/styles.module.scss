@@ -6,10 +6,8 @@
   flex-direction: column;
   align-items: center;
 
-  border: 2px solid var(--redash_light);
   border-radius: 1rem;
   position: relative;
-  background-color: var(--redash_light);
 
   &::before {
     content: "";
@@ -31,13 +29,14 @@
   }
 
   input {
-    width: 6rem; 
-    height: 6rem; 
+    width: 7rem; 
+    height: 7rem; 
 
-    border: 2px solid var(--redash_light);
-    border-radius: 3rem;
+    border: 3px solid var(--redash_light);
+    border-radius: 4rem;
     position: relative;
     background-color: var(--redash_light);
+    object-fit: cover;
   }
 
   p {
@@ -55,5 +54,27 @@
     &:hover {
       text-decoration: underline; 
     }
+  }
+}
+
+.featuredContainer {
+  @extend .cardContainer;
+
+  border: 2px solid var(--redash_light);
+  background-color: var(--redash_light);
+}
+
+.regularContainer {
+  @extend .cardContainer;
+
+  font-size: 0.8rem;
+
+  &::before {
+    border: 1px solid var(--redash_medium2);
+    height: 73%;
+  }
+
+  input {
+    border-color: var(--redash_medium2);
   }
 }
