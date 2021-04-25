@@ -1,0 +1,80 @@
+.cardContainer {
+  padding: 1rem;
+  max-height: 22rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 1rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 67%; /* magic number, but the height mostly doesn't change */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    border-radius: inherit;
+    background-color: var(--redash_dark);
+  }
+
+  h2 {
+    margin-top: 0;
+    font-family: Lobster, serif;
+    color: var(--red_dark);
+  }
+
+  input {
+    width: 7rem; 
+    height: 7rem; 
+
+    border: 3px solid var(--redash_light);
+    border-radius: 4rem;
+    position: relative;
+    background-color: var(--redash_light);
+    object-fit: cover;
+  }
+
+  p {
+    padding: 0.5rem;
+    width: max-content;
+    font-size: 0.8rem;
+
+    background-color: var(--gray_dark);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  a {
+    position: relative;
+    &:hover {
+      text-decoration: underline; 
+    }
+  }
+}
+
+.featuredContainer {
+  @extend .cardContainer;
+
+  border: 2px solid var(--redash_light);
+  background-color: var(--redash_light);
+}
+
+.regularContainer {
+  @extend .cardContainer;
+
+  font-size: 0.8rem;
+
+  &::before {
+    border: 1px solid var(--redash_medium2);
+    height: 73%;
+  }
+
+  input {
+    border-color: var(--redash_medium2);
+  }
+}

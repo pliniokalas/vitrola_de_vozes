@@ -1,0 +1,52 @@
+:root {
+  --redsmoke: #D7CBCB;
+  --gray_dark: #101010;
+
+  --redash_dark: #232520;
+  --redash_medium: #698044;
+  --redash_medium2: #445031;
+  --redash_light: #85A358;
+
+  --red_dark: #A63921;
+  --red_medium: #CF4425;
+  --red_light: #F1502C;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Rubik, sans-serif;
+  color: var(--redash_light);
+  background-color: var(--gray_dark);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+ul {
+  padding: 0;
+
+  li {
+    list-style-type: none;
+  }
+}

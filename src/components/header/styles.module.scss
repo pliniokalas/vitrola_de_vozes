@@ -1,0 +1,12 @@
+.headerContainer {
+  display: flex;
+  justify-content: center;
+  
+  img {
+    width: 1.5rem;
+  }
+  p {
+    font-family: Lobster, Serif;
+    color: var(--redash_medium);
+  }
+}

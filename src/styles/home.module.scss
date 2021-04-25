@@ -1,0 +1,51 @@
+.homeContainer {
+  padding: 0 1rem;
+  display: grid;
+  grid-template: auto / max-content auto;
+  gap: 1rem;
+  overflow: hidden;
+
+  > div {
+    overflow-y: scroll;
+    position: relative;
+
+    menu {
+      padding: 0;
+      margin: 0;
+
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid var(--redash_medium2);
+
+      background-color: var(--gray_dark);
+      font-family: Lobster, serif;
+
+      span {
+        margin-right: auto;
+        color: var(--redash_medium2);
+      }
+
+      button {
+        font-size: 0;
+
+        img {
+          width: 1.5rem;
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+
+      li {
+        width: min-content;
+        padding: 0.5rem;
+      }
+    }
+  }
+}
