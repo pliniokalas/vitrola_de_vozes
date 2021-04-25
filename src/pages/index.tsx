@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import { usePlayer } from "../utils/player-context.tsx";
 import { formatDate, convertTime } from "../utils/utils";
 import FeaturedCard from "../components/featuredCard/featured-card";
 import styles from "../styles/home.module.scss";
@@ -18,6 +19,8 @@ type HomeProps = {
 }
 
 export default function Home({ allEpisodes }: HomeProps) {
+  const { makePlaylist } = usePlayer();
+
   return (
     <section className={styles.homeContainer}>
       <FeaturedCard 
@@ -26,6 +29,7 @@ export default function Home({ allEpisodes }: HomeProps) {
         title="Título do episódio"
         metadata="01 Jan, 2001"
         thumb="/"
+        play={() => {}}
       />
 
     <div className="allEpisodes">
@@ -42,7 +46,7 @@ export default function Home({ allEpisodes }: HomeProps) {
       </menu>
 
       <ul className="allEpisodes">
-        { allEpisodes.map((episode) => (
+        { allEpisodes.map((episode, index) => (
           <li key={episode.id}>
             <FeaturedCard
               mode="ep"
@@ -50,6 +54,7 @@ export default function Home({ allEpisodes }: HomeProps) {
               title={episode.title}
               metadata={episode.publishedAt + " - " + convertTime(episode.duration)}
               thumb={episode.thumbnail}
+              play={() => makePlaylist(allEpisodes, index)}
             />
           </li>))
         }

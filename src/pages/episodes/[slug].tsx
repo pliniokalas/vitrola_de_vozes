@@ -2,8 +2,6 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate, convertTime } from "../../utils/utils";
-import { useRouter } from "next/router";
-
 import styles from "./styles.module.scss";
 
 type Episode = {
@@ -22,8 +20,6 @@ type EpisodeProps = {
 }
 
 export default function Episode({ episode }: EpisodeProps) {
-  const router = useRouter();
-
   return (
     <section className={styles.episodeContainer}>
       <div>
@@ -54,6 +50,7 @@ export default function Episode({ episode }: EpisodeProps) {
   );
 }
 
+// TODO add latest episode path
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],

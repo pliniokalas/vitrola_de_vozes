@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./styles.module.scss";
 
 export default function FeaturedCard(props) {
-  const { mode, thumb, metadata, title, id } = props;
+  const { mode, thumb, metadata, title, id, play } = props;
 
   return (
     <>
@@ -15,7 +15,7 @@ export default function FeaturedCard(props) {
             type="image" 
             src={thumb} 
             alt="thumbnail" 
-            onClick={() => console.log("play the episode")}
+            onClick={play}
           />
         </label>
 
