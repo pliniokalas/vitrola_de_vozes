@@ -9,12 +9,16 @@ export default function FeaturedCard(props) {
       <article className={mode !== "ep" ? styles.featuredContainer : styles.regularContainer}>
         { mode !== "ep" && <h2>{mode}</h2> }
 
-        <input 
-          type="image" 
-          src={thumb} 
-          alt="thumbnail" 
-          onClick={() => console.log("play the episode")}
-        />
+        <label htmlFor="playBtn">
+          <input 
+            name="playBtn"
+            type="image" 
+            src={thumb} 
+            alt="thumbnail" 
+            onClick={() => console.log("play the episode")}
+          />
+        </label>
+
         <p>{metadata}</p>
 
         <Link href={`/${id}`}>
