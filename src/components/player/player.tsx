@@ -1,6 +1,7 @@
 import { usePlayer } from "../../utils/player-context.tsx";
 import { convertTime } from "../../utils/utils.js";
 import { useRef, useEffect, useState } from "react";
+import Slider from "../slider/slider.tsx";
 import styles from "./styles.module.scss";
 
 type Episode = {
@@ -81,8 +82,10 @@ export default function Player() {
           <span>{episode.title}</span>
 
           <div className={styles.seekBarContainer}>
-            <span>{convertTime(progress)}</span>
-            <div className={styles.seekBar} />
+            <div className={styles.progressContainer}>
+              <span>{convertTime(progress)}</span>
+            </div>
+            <Slider val={progress} max={episode.duration} onChange={handleSeek} />
             <span>{convertTime(episode.duration)}</span>
           </div>
         </>

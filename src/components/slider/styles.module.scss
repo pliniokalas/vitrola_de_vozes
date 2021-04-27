@@ -1,0 +1,41 @@
+.sliderContainer {
+  width: 75%;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  margin: 2px 1rem;
+
+  background-color: var(--redash_dark);
+  position: relative;
+
+ .rail {
+    --primaryColor: var(--red_medium);
+
+    height: 3px;
+
+    border-radius: 2px;
+    background-color: var(--primaryColor);
+  }
+
+ .track {
+    flex: 1;
+    height: 3px;
+
+    border-radius: 2px;
+    background-color: var(--redash_medium2);
+  }
+  
+  .handle {
+    --primaryColor: var(--red_medium);
+
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    border-radius: 100%;
+    transform: translateX(-50%);
+
+    background-color: var(--primaryColor);
+  }
+}
+
