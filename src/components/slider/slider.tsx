@@ -19,7 +19,7 @@ export default function Slider({ val, onChange, disabled = false }) {
 
     areaRef.current.onclick = (e) => handleClick(e);
     return () => areaRef.current.onclick = null; 
-  }, []);
+  }, [disabled]);
 
   return (
     <div ref={areaRef} className={[styles.sliderContainer, (disabled && styles.off)].join(" ")}>

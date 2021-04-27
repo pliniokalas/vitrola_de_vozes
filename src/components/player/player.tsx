@@ -27,6 +27,8 @@ export default function Player() {
     hasPrev,
     isMuted,
     mute,
+    rate,
+    changeRate,
   } = usePlayer();
 
   const [progress, setProgress] = useState(0);
@@ -55,6 +57,28 @@ export default function Player() {
       clearPlayer();
     }
   }
+
+  function handleRateChange() {
+    let newRate = rate;
+
+    switch(rate) {
+      case 1:
+        newRate = 1.5;
+        break;
+      case 1.5:
+        newRate = 2;
+        break;
+      case 2:
+        newRate = 0.5;
+        break;
+
+      default:
+        newRate = 1;
+    }
+
+    changeRate(newRate);
+    audioRef.current.playbackRate = newRate;
+  } 
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -128,8 +152,12 @@ export default function Player() {
         </menu>
 
         <menu className={styles.settingsMenu}>
-          <button className={styles.speed} type="button">
-            1x
+          <button 
+            className={styles.rateBtn}
+            type="button" 
+            onClick={handleRateChange}
+          >
+            {rate + "x"}
           </button>
 
           <div className={styles.volumeContainer}>
