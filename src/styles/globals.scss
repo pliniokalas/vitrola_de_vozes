@@ -30,16 +30,28 @@ a {
   box-sizing: border-box;
 }
 
-button {
-  height: 2rem;
-  width: 2rem;
+button, input[type="image"] {
+  --size: 2rem;
+
+  height: var(--size);
+  width: var(--size);
   padding: 0;
   border: none;
   background-color: transparent;
-  cursor: pointer;
+  opacity: 0.5;
 
-  &:hover {
-    opacity: 0.7;
+  &:enabled {
+    cursor: pointer;
+    opacity: 1;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  img {
+    height: var(--size);
+    height: var(--size);
   }
 }
 

@@ -28,17 +28,37 @@
     color: var(--red_dark);
   }
 
-  input {
-    width: 7rem; 
-    height: 7rem; 
-
-    border: 3px solid var(--redash_light);
-    border-radius: 4rem;
+  label {
+    display: flex; // this is to fix a glitch with sizing
     position: relative;
-    background-color: var(--redash_light);
-    object-fit: cover;
-  }
+    overflow: hidden;
+    border: 4px solid var(--primaryColor);
+    border-radius: 4rem;
+    background-color: var(--primaryColor);
 
+    input {
+      width: 7rem; 
+      height: 7rem; 
+      object-fit: cover;
+    }
+
+    &:hover{
+      border-color: var(--redash_dark);
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        background: url("../../../public/play_red.svg") no-repeat #85a358eb center;
+        pointer-events: none;
+      }
+    }
+  }
+  
   p {
     padding: 0.5rem;
     width: max-content;
@@ -60,6 +80,8 @@
 .featuredContainer {
   @extend .cardContainer;
 
+  --primaryColor: var(--redash_light);
+
   border: 2px solid var(--redash_light);
   background-color: var(--redash_light);
 }
@@ -68,13 +90,13 @@
   @extend .cardContainer;
 
   font-size: 0.8rem;
+  --primaryColor: var(--gray_dark);
 
   &::before {
-    border: 1px solid var(--redash_medium2);
     height: 73%;
   }
 
-  input {
-    border-color: var(--redash_medium2);
+  &:hover {
+    filter: drop-shadow(-1px 1px 0 var(--redash_light)) drop-shadow(1px 1px 0 var(--redash_light)) drop-shadow(1px -1px 0 var(--redash_light)) drop-shadow(-1px -1px 0 var(--redash_light));
   }
 }

@@ -17,15 +17,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
 
-    span {
+    // this prevents the change in width caused by the 
+    // non-monospaced font from affecting the rest of the elements 
+    .progressContainer {
+      width: 3.5rem; 
+      text-align: left;
     }
 
     .seekBar {
       width: 75%;
-      height: 2px;
+      height: 3px;
       margin: 0 1rem;
-      background-color: var(--redash_medium);
+      background-color: var(--redash_medium2);
+
+      div {
+        height: 100%;
+      }
     }
   }
 
@@ -43,11 +52,6 @@
       button {
         padding: 0;
         font-size: 0;
-
-        img {
-          width: 2rem;
-          height: 2rem;
-        }
       }
     }
 
@@ -66,9 +70,34 @@
   position: absolute;
   right: 12%; 
 
-  button:last-child {
-    font-family: Lobster;
+  .rateBtn {
+    width: max-content;
+    padding: 0 0.5rem;
+    font-family: Lobster, serif;
     font-size: 1.2rem;
     color: var(--redash_medium);
+  }
+  .volumeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+
+    transition: width ease 300ms 1s;
+
+    > div {
+      opacity: 0;
+      transition: opacity 300ms ease 1s;
+    }
+
+    &:hover {
+      width: 10rem;
+      transition-delay: 0s;
+
+      & > div {
+        opacity: 1;
+        transition-delay: 0s;
+      }
+    }
   }
 }

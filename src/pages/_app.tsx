@@ -1,3 +1,5 @@
+import { PlayerContextProvider } from "../utils/player-context.tsx";
+
 import Header from "../components/header/header";
 import Player from "../components/player/player";
 
@@ -6,11 +8,13 @@ import styles from "../styles/app.module.scss";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <main className={styles.appContainer}>
-      <Header />
-      <Component {...pageProps} />
-      <Player />
-    </main>
+    <PlayerContextProvider>
+      <main className={styles.appContainer}>
+        <Header />
+        <Component {...pageProps} />
+        <Player />
+      </main>
+    </PlayerContextProvider>
   );
 }
 
