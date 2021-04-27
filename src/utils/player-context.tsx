@@ -17,11 +17,13 @@ type PlayerContextData = {
   isPlaying: boolean;
   hasPrev: boolean;
   hasNext: boolean;
+  isMuted: boolean;
   togglePlay: () => void;
   makePlaylist: (list: Episode[], index: number) => void;
   playNext: () => void;
   playPrev: () => void;
   clearPlayer: () => void;
+  mute: () => void;
 };
 
 type PlayerContextProps = {
@@ -32,6 +34,7 @@ export function PlayerContextProvider({ children }: PlayerContextProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playlist, setPlaylist] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMuted, setIsMuted] = useState(false);
 
   const hasNext = currentIndex + 1 <= playlist.length - 1;
   const hasPrev = currentIndex - 1 >= 0;
@@ -62,17 +65,23 @@ export function PlayerContextProvider({ children }: PlayerContextProps) {
     setIsPlaying(false)
   }
 
+  function mute() {
+    setIsMuted((prev) => !prev);
+  }
+
   const value = {
     isPlaying,
     hasNext,
     hasPrev,
     playlist,
     currentIndex,
+    isMuted,
     togglePlay,
     playPrev,
     playNext,
     makePlaylist,
     clearPlayer,
+    mute,
   };
 
   return (

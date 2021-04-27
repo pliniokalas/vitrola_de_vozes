@@ -36,9 +36,11 @@ button, input[type="image"] {
   padding: 0;
   border: none;
   background-color: transparent;
+  opacity: 0.5;
 
   &:enabled {
     cursor: pointer;
+    opacity: 1;
 
     &:hover {
       opacity: 0.7;

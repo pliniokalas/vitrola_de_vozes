@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
 
     // this prevents the change in width caused by the 
     // non-monospaced font from affecting the rest of the elements 
@@ -52,10 +53,6 @@
         padding: 0;
         font-size: 0;
 
-        &:disabled {
-          opacity: 0.5;
-        }
-
         img {
           width: 2rem;
           height: 2rem;
@@ -78,9 +75,33 @@
   position: absolute;
   right: 12%; 
 
-  button:last-child {
+  .speed {
     font-family: Lobster;
     font-size: 1.2rem;
     color: var(--redash_medium);
+  }
+
+  .volumeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+
+    transition: width ease 300ms 1s;
+
+    > div {
+      opacity: 0;
+      transition: opacity 300ms ease 1s;
+    }
+
+    &:hover {
+      width: 10rem;
+      transition-delay: 0s;
+
+      & > div {
+        opacity: 1;
+        transition-delay: 0s;
+      }
+    }
   }
 }

@@ -1,19 +1,25 @@
 .sliderContainer {
+  --primaryColor: var(--red_medium);
+
   width: 75%;
   height: 16px;
 
   display: flex;
   align-items: center;
-  margin: 2px 1rem;
+  margin: 2px 4px;
 
   background-color: var(--redash_dark);
   position: relative;
 
+  &.off {
+    --primaryColor: transparent; 
+  }
+
  .rail {
-    --primaryColor: var(--red_medium);
-
     height: 3px;
+    width: 0%;
 
+    transition: width ease 200ms;
     border-radius: 2px;
     background-color: var(--primaryColor);
   }
@@ -27,14 +33,13 @@
   }
   
   .handle {
-    --primaryColor: var(--red_medium);
-
     height: 16px;
     width: 16px;
     position: absolute;
     border-radius: 100%;
     transform: translateX(-50%);
 
+    transition: left ease 200ms;
     background-color: var(--primaryColor);
   }
 }

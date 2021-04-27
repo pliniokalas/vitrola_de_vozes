@@ -25,6 +25,8 @@ export default function Player() {
     playPrev,
     hasNext,
     hasPrev,
+    isMuted,
+    mute,
   } = usePlayer();
 
   const [progress, setProgress] = useState(0);
@@ -41,8 +43,9 @@ export default function Player() {
   }
 
   function handleSeek(val: number) {
-    audioRef.current.currentTime = val;
-    setProgress(val);
+    const time = Math.floor(val * episode.duration);
+    audioRef.current.currentTime = time;
+    setProgress(time);
   }
 
   function handleEnd() {
@@ -67,39 +70,32 @@ export default function Player() {
 
   return (
     <div className={styles.playerContainer}>
-      {episode 
-        ?
-        <> {/* populated player */}
-          <audio
-            autoPlay
-            src={episode.url}
-            ref={audioRef}
-            onPlay={() => togglePlay(true)}
-            onPause={() => togglePlay(false)}
-            onEnded={handleEnd}
-            onLoadedMetadata={handleProgress}
-          />
-          <span>{episode.title}</span>
-
-          <div className={styles.seekBarContainer}>
-            <div className={styles.progressContainer}>
-              <span>{convertTime(progress)}</span>
-            </div>
-            <Slider val={progress} max={episode.duration} onChange={handleSeek} />
-            <span>{convertTime(episode.duration)}</span>
-          </div>
-        </>
-        :
-        <> {/* empty player */}
-          <span>Escolha algo para ouvir</span>
-
-          <div className={styles.seekBarContainer}>
-            <span>00:00:00</span>
-            <div className={styles.seekBar} />
-            <span>00:00:00</span>
-          </div>
-        </>
+      {episode &&
+        <audio
+          autoPlay
+          src={episode.url}
+          ref={audioRef}
+          muted={isMuted}
+          onPlay={() => togglePlay(true)}
+          onPause={() => togglePlay(false)}
+          onEnded={handleEnd}
+          onLoadedMetadata={handleProgress}
+        />
       }
+
+      <span>{episode?.title || "Escolha algo para ouvir"}</span>
+
+      <div className={styles.seekBarContainer}>
+        <div className={styles.progressContainer}>
+          <span>{convertTime(progress)}</span>
+        </div>
+        <Slider 
+          disabled={!episode}
+          val={(progress/episode?.duration)} 
+          onChange={handleSeek} 
+        />
+        <span>{convertTime(episode?.duration || 0)}</span>
+      </div>
 
       <section>
         <menu className={styles.playMenu}>
@@ -132,13 +128,27 @@ export default function Player() {
         </menu>
 
         <menu className={styles.settingsMenu}>
-          <button type="button">
-            <img src="/volume.svg" alt="volume" />
-          </button>
-
-          <button type="button">
+          <button className={styles.speed} type="button">
             1x
           </button>
+
+          <div className={styles.volumeContainer}>
+            <button 
+              className={styles.volumeBtn}
+              type="button"
+              onClick={mute}
+            >
+              { isMuted
+                ? <img src="/mute.svg" alt="muted" />
+                : <img src="/volume.svg" alt="volume" />
+              }
+            </button>
+            <Slider 
+              disabled={!episode}
+              val={audioRef.current?.volume} 
+              onChange={(vol) => audioRef.current.volume = vol} 
+            />
+          </div>
         </menu>
       </section>
     </div>
