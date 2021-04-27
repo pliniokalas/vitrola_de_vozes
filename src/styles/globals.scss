@@ -31,8 +31,10 @@ a {
 }
 
 button, input[type="image"] {
-  height: 2rem;
-  width: 2rem;
+  --size: 2rem;
+
+  height: var(--size);
+  width: var(--size);
   padding: 0;
   border: none;
   background-color: transparent;
@@ -45,6 +47,11 @@ button, input[type="image"] {
     &:hover {
       opacity: 0.7;
     }
+  }
+
+  img {
+    height: var(--size);
+    height: var(--size);
   }
 }
 

@@ -12,7 +12,11 @@
     border-radius: 1rem; 
     background-color: var(--redash_dark);
 
-    img {
+    // Couldn't make a specific selector
+    // because the <Image /> from
+    // Next is weird. This selector 
+    // excludes the only other image: btn > img 
+    img:not(button > *) {
       height: 7rem;
       width: max-content;
       border-radius: 5px;
@@ -22,37 +26,48 @@
       font-size: 0.8rem;
     }
 
+    span, button {
+      background-color: var(--gray_dark);
+      opacity: 0.5;
+      border-radius: 2px;
+    }
+
     span {
       padding: 0.5rem;
       width: max-content;
       font-size: 0.8rem;
 
-      background-color: var(--gray_dark);
-      opacity: 0.5;
-      border-radius: 2px;
-
-      &:last-child {
+      & + * {
         margin-left: 1rem;
+      }
+    }
+
+    .playBtn {
+      vertical-align: middle;
+
+      &:hover {
+        opacity: 1;
       }
     }
   }
 
-  article {
-    button {
-      vertical-align: bottom;
-      margin-right: 0.5rem;
-
-      img {
-        width: inherit; 
-        height: inherit; 
-      }
-    }
-
-    h2 {
+  .description {
+    .header {
       font-family: Lobster, serif;
       color: var(--redsmoke);
       margin-top: 0;
+
+      button {
+        vertical-align: bottom;
+        margin-right: 0.5rem;
+
+        img {
+          width: inherit; 
+          height: inherit; 
+        }
+      }
     }
+
     div {
       color: var(--redash_light);
     }

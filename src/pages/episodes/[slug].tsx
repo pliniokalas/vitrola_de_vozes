@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatDate, convertTime } from "../../utils/utils";
 import styles from "./styles.module.scss";
+import { usePlayer } from "../../utils/player-context.tsx";
 
 type Episode = {
     id: string, 
@@ -20,10 +21,21 @@ type EpisodeProps = {
 }
 
 export default function Episode({ episode }: EpisodeProps) {
+  const { isPlaying, togglePlay, makePlaylist } = usePlayer(); 
+
+  function handlePlay() {
+    if (isPlaying) {
+      togglePlay(false);
+    } else {
+      makePlaylist([episode], 0);
+    }
+  }
+
   return (
     <section className={styles.episodeContainer}>
       <div>
         <Image
+          className={styles.thumbnail}
           src={episode.thumbnail}
           alt="thumbnail"
           width={360}
@@ -33,13 +45,23 @@ export default function Episode({ episode }: EpisodeProps) {
         <p>{episode.members}</p>
         <span>{episode.publishedAt}</span>
         <span>{convertTime(episode.duration)}</span>
+        <button 
+          className={styles.playBtn} 
+          type="button"
+          onClick={handlePlay}
+        >
+          { isPlaying 
+            ? <img src="/pause.svg" alt="tocando" />
+            : <img src="/play.svg" alt="tocar" /> 
+          }
+        </button>
       </div>
 
-      <article>
-        <h2>
+      <article className={styles.description}>
+        <h2 className={styles.header}>
           <Link href={"/"}>
             <button type="button">
-              <img src="/back.svg" />
+              <img src="/back.svg" alt="voltar" />
             </button>
           </Link>
           {episode.title}
