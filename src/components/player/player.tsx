@@ -1,19 +1,12 @@
-import { usePlayer } from "../../utils/player-context.tsx";
-import { convertTime } from "../../utils/utils.js";
 import { useRef, useEffect, useState } from "react";
-import Slider from "../slider/slider.tsx";
+
+import { usePlayer } from "@/utils/player-context";
+import { convertTime } from "@/utils/utils";
+import Slider from "../slider/slider";
+
 import styles from "./styles.module.scss";
 
-type Episode = {
-  id: string,
-  title: string,
-  duration: number,
-  url: string,
-};
-
-type PlayerProps = {
-  episode: Episode
-};
+// ==================================================
 
 export default function Player() {
   const { 
@@ -29,6 +22,7 @@ export default function Player() {
     mute,
     rate,
     changeRate,
+    clearPlayer,
   } = usePlayer();
 
   const [progress, setProgress] = useState(0);
@@ -77,7 +71,8 @@ export default function Player() {
     }
 
     changeRate(newRate);
-    audioRef.current.playbackRate = newRate;
+    if (audioRef.current) 
+      audioRef.current.playbackRate = newRate;
   } 
 
   useEffect(() => {
@@ -174,7 +169,7 @@ export default function Player() {
             <Slider 
               disabled={!episode}
               val={audioRef.current?.volume} 
-              onChange={(vol) => audioRef.current.volume = vol} 
+              onChange={(vol: number) => audioRef.current.volume = vol} 
             />
           </div>
         </menu>

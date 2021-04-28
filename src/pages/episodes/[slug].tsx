@@ -1,9 +1,13 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { formatDate, convertTime } from "../../utils/utils";
+
+import { formatDate, convertTime } from "@/utils/utils";
+import { usePlayer } from "@/utils/player-context";
+
 import styles from "./styles.module.scss";
-import { usePlayer } from "../../utils/player-context.tsx";
+
+// ==================================================
 
 type Episode = {
     id: string, 
@@ -19,6 +23,8 @@ type Episode = {
 type EpisodeProps = {
   episode: Episode,
 }
+
+// ==================================================
 
 export default function Episode({ episode }: EpisodeProps) {
   const { isPlaying, togglePlay, makePlaylist } = usePlayer(); 
@@ -72,6 +78,8 @@ export default function Episode({ episode }: EpisodeProps) {
   );
 }
 
+// ==================================================
+
 // TODO add latest episode path
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -79,6 +87,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: "blocking",
   }
 }
+
+// ==================================================
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params;

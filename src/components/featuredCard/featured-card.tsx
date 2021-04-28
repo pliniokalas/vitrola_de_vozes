@@ -1,7 +1,20 @@
 import Link from "next/link";
 import styles from "./styles.module.scss";
 
-export default function FeaturedCard(props) {
+// ==================================================
+
+type CardProps = {
+  mode: string,
+  thumb: string,
+  metadata: string,
+  title: string,
+  id: string,
+  play: () => void,
+}
+
+// ==================================================
+
+export default function FeaturedCard(props: CardProps) {
   const { mode, thumb, metadata, title, id, play } = props;
 
   return (
