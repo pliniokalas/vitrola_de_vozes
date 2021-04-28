@@ -1,11 +1,21 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import styles from "./styles.module.scss";
 
-export default function Slider({ val, onChange, disabled = false }) {
+// ==================================================
+
+type SliderProps = {
+  val: number,
+  onChange: (pos: number) => void,
+  disabled: boolean,
+}
+
+// ==================================================
+
+export default function Slider({ val, onChange, disabled = false }: SliderProps) {
   // const pos = (val / max) * 100;
   const areaRef = useRef();
 
-  function handleClick(e) {
+  function handleClick(e: MouseEvent) {
     const width = areaRef.current.getBoundingClientRect().width;
     const pos = e.offsetX / width;
     onChange(pos);
@@ -17,7 +27,7 @@ export default function Slider({ val, onChange, disabled = false }) {
       return;
     }
 
-    areaRef.current.onclick = (e) => handleClick(e);
+    areaRef.current.onclick = (e: MouseEvent) => handleClick(e);
     return () => areaRef.current.onclick = null; 
   }, [disabled]);
 

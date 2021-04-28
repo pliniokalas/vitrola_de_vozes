@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const PlayerContext = createContext({} as PlayerContextData);
+// ==================================================
 
 type Episode = {
   id: string;
@@ -19,18 +19,24 @@ type PlayerContextData = {
   hasNext: boolean;
   isMuted: boolean;
   rate: number;
-  togglePlay: () => void;
+  togglePlay: (val: boolean) => void;
   makePlaylist: (list: Episode[], index: number) => void;
   playNext: () => void;
   playPrev: () => void;
   clearPlayer: () => void;
   mute: () => void;
-  changeRate: () => void;
+  changeRate: (val: number) => void;
 };
 
 type PlayerContextProps = {
-  children: ReactNode
+  children: React.ReactNode 
 }
+
+// ==================================================
+
+const PlayerContext = createContext({} as PlayerContextData);
+
+// ==================================================
 
 export function PlayerContextProvider({ children }: PlayerContextProps) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -42,7 +48,7 @@ export function PlayerContextProvider({ children }: PlayerContextProps) {
   const hasNext = currentIndex + 1 <= playlist.length - 1;
   const hasPrev = currentIndex - 1 >= 0;
 
-  function togglePlay(val) {
+  function togglePlay(val: boolean) {
     setIsPlaying(val);
   }
 
@@ -72,7 +78,7 @@ export function PlayerContextProvider({ children }: PlayerContextProps) {
     setIsMuted((prev) => !prev);
   }
 
-  function changeRate(val) {
+  function changeRate(val: number) {
     setRate(val);
   }
 
@@ -99,6 +105,8 @@ export function PlayerContextProvider({ children }: PlayerContextProps) {
     </PlayerContext.Provider>
   );
 }
+
+// ==================================================
 
 export function usePlayer() {
   return useContext(PlayerContext);
